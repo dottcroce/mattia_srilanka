@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Pasikuda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="pagina-localita">
+    <h1>Pasikuda</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Pasikudah_beach_-_panoramio.jpg/640px-Pasikudah_beach_-_panoramio.jpg" alt="Pasikuda" class="immagine-localita">
+    <p class="descrizione">Pasikuda è conosciuta per le sue acque calme e cristalline e la lunga spiaggia sabbiosa. Ideale per il nuoto e il relax, è una delle località balneari più belle della costa orientale. Un luogo tranquillo per godersi il sole in un’atmosfera tropicale.</p>
+    <textarea placeholder="Scrivi qui i tuoi pensieri..." id="diario-pasikuda"></textarea>
+    <br>
+    <button onclick="salvaPensiero('pasikuda')">Salva</button>
+    <button onclick="location.href='index.html'">Torna alla Home</button>
+  </div>
+  <script>
+    const saved = localStorage.getItem("diario-pasikuda");
+    if (saved) document.getElementById("diario-pasikuda").value = saved;
+    function salvaPensiero(localita) {
+      const testo = document.getElementById("diario-" + localita).value;
+      localStorage.setItem("diario-" + localita, testo);
+      alert("Pensiero salvato!");
+    }
+  </script>
+</body>
+</html>

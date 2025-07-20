@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Udawalawe</title>
+  <link rel="stylesheet" href="../style.css"/>
+  <style>
+    .titolo-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffcb77;
+      color: #3d405b;
+      padding: 1em;
+      margin: 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      font-family: 'Comic Sans MS', cursive;
+      position: relative;
+    }
+    .box-data {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      background-color: #ffe599;
+      color: #d62828;
+      padding: 8px 14px;
+      border: 2px dashed #d62828;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1.2em;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
+    .titolo-container h1 {
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      font-size: 2em;
+    }
+    .top-section {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin: 20px auto;
+      max-width: 1000px;
+      gap: 30px;
+    }
+    .foto-localita {
+      width: 450px;
+      max-width: 95%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .descrizione {
+      flex: 1;
+      background: #fff8dc;
+      border: 2px dashed #cba135;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.1em;
+      font-family: 'Comic Sans MS', cursive;
+      color: #444;
+      line-height: 1.5em;
+    }
+    .simbolo {
+      font-size: 1.3em;
+      margin-left: 10px;
+    }
+    .diario-container {
+      background: #fff8dc;
+      border: 3px double #cba135;
+      border-radius: 15px;
+      padding: 20px;
+      margin: 2em auto;
+      max-width: 700px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      background-image: repeating-linear-gradient(
+        to bottom,
+        #fff8dc,
+        #fff8dc 29px,
+        #e0d8b0 30px
+      );
+    }
+    textarea {
+      width: 100%;
+      height: 300px;
+      font-family: 'Comic Sans MS', cursive;
+      font-size: 1.1em;
+      background: transparent;
+      border: none;
+      outline: none;
+      resize: none;
+      line-height: 30px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #ffcb77;
+      border: 2px solid #e07a5f;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body style="background-color:#fffde7;">
+  <div class="titolo-container">
+    <div class="box-data">9–12 agosto</div>
+    <h1>Udawalawe <span class="simbolo">🐘</span></h1>
+  </div>
+
+  <div class="top-section">
+    <img src="../img/localita/udawalawe.jpg" alt="Foto di Udawalawe" class="foto-localita"/>
+    <div class="descrizione">Udawalawe è conosciuto per il suo Parco Nazionale, dove si possono ammirare elefanti selvatici da vicino. 
+Il parco offre safari emozionanti in jeep, perfetti per un’avventura in famiglia. 
+La natura incontaminata e i panorami aperti lo rendono un luogo indimenticabile.</div>
+  </div>
+
+  <div class="diario-container">
+    <textarea id="diario" placeholder="Scrivi qui i tuoi pensieri..." rows="10"></textarea>
+  </div>
+
+  <button onclick="salva()">Salva</button>
+  <button onclick="tornaHome()">Home</button>
+
+  <script>
+    const key = "diario_udawalawe";
+    const diario = document.getElementById("diario");
+    diario.value = localStorage.getItem(key) || "";
+
+    function salva() {
+      localStorage.setItem(key, diario.value);
+      alert("Pensieri salvati!");
+    }
+
+    function tornaHome() {
+      if (diario.value !== localStorage.getItem(key)) {
+        if (!confirm("Non hai salvato le modifiche. Vuoi davvero uscire?")) return;
+      }
+      window.location.href = "../index.html";
+    }
+  </script>
+</body>
+</html>

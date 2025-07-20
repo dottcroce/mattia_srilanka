@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Negombo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="pagina-localita">
+    <h1>Negombo</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Negombo_beach.jpg/640px-Negombo_beach.jpg" alt="Negombo" class="immagine-localita">
+    <p class="descrizione">Negombo è una vivace città costiera famosa per le sue spiagge sabbiose e la laguna. Situata vicino all’aeroporto internazionale, è una porta d’accesso ideale allo Sri Lanka. Qui puoi trovare mercati di pesce, chiese coloniali e barche tradizionali. È il posto perfetto per rilassarsi all'inizio o alla fine del viaggio.</p>
+    <textarea placeholder="Scrivi qui i tuoi pensieri..." id="diario-negombo"></textarea>
+    <br>
+    <button onclick="salvaPensiero('negombo')">Salva</button>
+    <button onclick="location.href='index.html'">Torna alla Home</button>
+  </div>
+  <script>
+    const saved = localStorage.getItem("diario-negombo");
+    if (saved) document.getElementById("diario-negombo").value = saved;
+    function salvaPensiero(localita) {
+      const testo = document.getElementById("diario-" + localita).value;
+      localStorage.setItem("diario-" + localita, testo);
+      alert("Pensiero salvato!");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Kandy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="pagina-localita">
+    <h1>Kandy</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Kandy_Lake_and_Temple.jpg/640px-Kandy_Lake_and_Temple.jpg" alt="Kandy" class="immagine-localita">
+    <p class="descrizione">Kandy è il cuore culturale dello Sri Lanka, famosa per il Tempio del Dente e il lago centrale. Circondata da colline e foreste, è una città ricca di spiritualità e tradizione. Il festival Esala Perahera è uno degli eventi più spettacolari del paese. Un luogo imperdibile per chi ama la cultura e la natura.</p>
+    <textarea placeholder="Scrivi qui i tuoi pensieri..." id="diario-kandy"></textarea>
+    <br>
+    <button onclick="salvaPensiero('kandy')">Salva</button>
+    <button onclick="location.href='index.html'">Torna alla Home</button>
+  </div>
+  <script>
+    const saved = localStorage.getItem("diario-kandy");
+    if (saved) document.getElementById("diario-kandy").value = saved;
+    function salvaPensiero(localita) {
+      const testo = document.getElementById("diario-" + localita).value;
+      localStorage.setItem("diario-" + localita, testo);
+      alert("Pensiero salvato!");
+    }
+  </script>
+</body>
+</html>

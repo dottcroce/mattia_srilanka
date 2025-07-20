@@ -1,0 +1,42 @@
+
+body {
+  font-family: 'Comic Sans MS', cursive;
+  background: #fef6e4;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+h1 {
+  background-color: #ffcb77;
+  color: #3d405b;
+  margin: 0;
+  padding: 1em;
+  font-size: 1.8em;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.map-container {
+  position: relative;
+  display: inline-block;
+  max-width: 95%;
+}
+
+#mappa {
+  width: 100%;
+  height: auto;
+  border: 4px dashed #ff6f61;
+  border-radius: 10px;
+}
+
+.marker {
+  position: absolute;
+  background: #ff6f61;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px #999;
+  transform: translate(-50%, -50%);
+}
