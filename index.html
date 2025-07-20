@@ -21,5 +21,13 @@
     <div class="marker" style="top: 30%; left: 75%;" onclick="openLocation('trincomalee')">Trincomalee</div>
   </div>
   <script src="script.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log('Service Worker registrato!'));
+    });
+  }
+</script>
 </body>
 </html>
