@@ -1,6 +1,6 @@
 
 body {
-  font-family: 'Comic Sans MS', cursive;
+  
   background: #fef6e4;
   margin: 0;
   padding: 0;
@@ -53,4 +53,19 @@ h1 {
 
 textarea {
   height: 400px;
+}
+
+body, textarea, h1, button {
+  font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+  font-size: 1.6em;
+  line-height: 1.6em;
+}
+
+h1 {
+  font-size: 2.5em !important;
+}
+
+textarea {
+  height: 450px;
+  font-size: 1.4em;
 }
