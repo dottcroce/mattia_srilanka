@@ -41,4 +41,16 @@ h1 {
   transform: translate(-50%, -50%);
 }
 
-body, textarea, h1, button { font-size: 1.2em; }
+
+
+body, textarea, h1, button {
+  font-size: 1.4em;
+}
+
+h1 {
+  font-size: 2.2em !important;
+}
+
+textarea {
+  height: 400px;
+}
