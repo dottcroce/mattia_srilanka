@@ -165,3 +165,131 @@ button:hover, .btn:hover {
         font-family: 'Arial', sans-serif;
     }
 }
+
+
+/* --- Stile per il pulsante Home vicino al titolo --- */
+.home-btn {
+    background-color: #ffcc00;
+    border: 2px solid #333;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.home-btn:hover {
+    background-color: #ffdd33;
+}
+
+/* --- Layout per il contenitore del titolo con Home --- */
+.titolo-localita {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- Pulsante Home fisso in alto a sinistra --- */
+.home-btn-fixed {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #ffcc00;
+    border: 2px solid #333;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+    z-index: 1000;
+}
+.home-btn-fixed:hover {
+    background-color: #ffdd33;
+}
+
+/* Forza i titoli delle località centrati */
+h1 {
+    text-align: center !important;
+}
+
+/* Pulsante Home visibile in alto a sinistra */
+.home-btn-fixed {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: #ffcc00;
+    border: 2px solid #333;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+    z-index: 2000;
+}
+.home-btn-fixed:hover {
+    background-color: #ffdd33;
+}
+
+/* --- Forzo il centraggio dei titoli h1 --- */
+h1 {
+    text-align: center;
+    width: 100%;
+}
+
+/* --- Contenitore per pulsante Home visibile in alto a sinistra --- */
+.home-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 2000;
+}
+
+.home-container .home-btn {
+    background-color: #ffcc00;
+    border: 2px solid #333;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.home-container .home-btn:hover {
+    background-color: #ffdd33;
+}
+
+
+/* Override per titoli centrati */
+h1.titolo-localita {
+    display: block !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+/* Pulsante Home container styling - ensure visibility */
+.home-container {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 2000;
+}
+.home-container .home-btn {
+    background-color: #ffcc00;
+    border: 2px solid #333;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.home-container .home-btn:hover {
+    background-color: #ffdd33;
+}
+
+
+/* Override per centrare perfettamente i titoli */
+h1.titolo-localita {
+    position: relative !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
