@@ -28,9 +28,10 @@
       border: 2px dashed #cba135;
       padding: 20px;
       border-radius: 10px;
-      /* carattere più leggibile e dimensione maggiore */
-      font-size: 1.3em;
-      font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+      /* Font più leggibile (Arial) e dimensione maggiore per migliorare
+         la leggibilità su tablet e dispositivi mobili */
+      font-size: 1.5em;
+      font-family: 'Arial', sans-serif;
       color: #444;
       line-height: 1.6em;
     }
@@ -53,8 +54,8 @@
     textarea {
       width: 100%;
       height: 300px;
-      font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
-      font-size: 1.3em;
+      font-family: 'Arial', sans-serif;
+      font-size: 1.5em;
       background: transparent;
       border: none;
       outline: none;
@@ -63,12 +64,12 @@
     button {
       margin: 10px;
       padding: 10px 20px;
-      font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       background-color: #ffcb77;
       border: 2px solid #e07a5f;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 1.2em;
+      font-size: 1.3em;
     }
     /* Map and diary layout styles */
     .map-section {
@@ -110,11 +111,14 @@
       gap: 0.3em;
     }
     .diario-header .rating-section .stars {
-      /* ingrandisci le stelle della valutazione per una migliore leggibilità */
-      font-size: 2.2em;
+      font-size: 1.5em;
     }
 
-    /* Stili personalizzati per le date di permanenza e il simbolo caratteristico */
+    /* Stili per le date di permanenza e il simbolo della località.
+       Questa sezione mostra i giorni in cui si soggiorna a Negombo e
+       un simbolo che rappresenta la località (in questo caso una spiaggia).
+       Abbiamo scelto colori caldi e un font leggibile per armonizzarsi con il resto
+       della pagina. */
     .info-localita {
       display: flex;
       justify-content: center;
@@ -130,35 +134,26 @@
       border: 2px dashed #d62828;
       border-radius: 10px;
       font-weight: bold;
-      font-size: 1.1em;
+      font-size: 1.2em;
+      font-family: 'Arial', sans-serif;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     }
     .simbolo {
       font-size: 2em;
-    }
-    /* Ingrandisci e colora il checkbox di visita e testi */
-    .diario-header .visit-section input[type="checkbox"] {
-      transform: scale(1.5);
-      accent-color: #d62828;
-      margin-right: 4px;
-    }
-    .diario-header .visit-section span,
-    .diario-header .rating-section span {
-      font-size: 1.2em;
     }
 </style>
 </head>
 <body style="background-color:#fffde7;">
 <!-- Titolo della località -->
 <h1 class="titolo-localita">Negombo</h1>
- <!-- Box date di permanenza e simbolo caratteristico -->
- <div class="info-localita">
-   <div class="date-box">
-     martedì 5 agosto 2025<br/>
-     mercoledì 6 agosto 2025
-   </div>
-   <div class="simbolo">🏖️</div>
- </div>
+  <!-- Sezione che mostra i giorni di permanenza e un simbolo caratteristico -->
+  <div class="info-localita">
+    <div class="date-box">
+      martedì 5 agosto 2025<br/>
+      mercoledì 6 agosto 2025
+    </div>
+    <div class="simbolo">🏖️</div>
+  </div>
 <div class="top-section">
   <img alt="Foto di Negombo" class="foto-localita" src="../img/localita/negombo.jpg"/>
   <div class="descrizione">Negombo è una cittadina costiera situata sulla costa occidentale dello <strong>SRI LANKA</strong> è spesso scelta come prima o ultima tappa dai viaggiatori per la sua comodità e atmosfera rilassata.<br/><br/><strong>ALBERGO:</strong> JETWING BLUE</div>
@@ -264,15 +259,12 @@ function beep() {
     const ctx = new AudioContext();
     const oscillator = ctx.createOscillator();
     const gainNode = ctx.createGain();
-    oscillator.type = 'square';
-    oscillator.frequency.setValueAtTime(1000, ctx.currentTime);
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(600, ctx.currentTime);
     oscillator.connect(gainNode);
-    // riduciamo il volume per creare un click discreto
-    gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
     gainNode.connect(ctx.destination);
     oscillator.start();
-    // durata brevissima dell'effetto (50 ms) per simulare la pressione di un tasto
-    oscillator.stop(ctx.currentTime + 0.05);
+    oscillator.stop(ctx.currentTime + 0.08);
   } catch (e) {
     // Browser non supporta AudioContext
   }

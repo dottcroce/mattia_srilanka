@@ -1,7 +1,11 @@
 /* Colori e font principali */
 body {
-    font-family: 'Comic Neue', cursive;
-    font-size: 1.2em;
+    /* Utilizziamo un font standard Sans‑Serif come Arial per migliorare
+       la leggibilità sia su desktop che su tablet. Aumentiamo la
+       dimensione di base dei caratteri per rendere più grande tutto il
+       testo dell’applicazione. */
+    font-family: 'Arial', sans-serif;
+    font-size: 1.4em;
     line-height: 1.6em;
     background-color: #fef6e4;
     color: #333;
@@ -12,18 +16,26 @@ body {
 
 /* Stile globale del titolo semplice (non usato in home) */
 h1 {
+    /* Titoli generici: aumentiamo il contrasto con un testo più scuro e
+       mantenendo il fondo pastello. Usiamo il font Arial per coerenza. */
     background-color: #ffcb77;
-    color: #3d405b;
+    color: #2c3e50;
     margin: 0;
     padding: 1em;
-    font-size: 2.5em !important;
+    font-size: 2.8em !important;
+    font-family: 'Arial', sans-serif;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 /* Titolo personalizzato in home con immagini e testo colorato */
+/* Stile per il blocco del titolo della home. Miglioriamo la leggibilità
+   scegliendo un colore di sfondo leggermente più chiaro e un colore di
+   testo più scuro per aumentare il contrasto. Inoltre utilizziamo il
+   font Arial e ingrandiamo ulteriormente la dimensione per una migliore
+   visibilità su tablet. */
 .title-home {
-    background-color: #ffcb77;
-    color: #3d405b;
+    background-color: #ffd97d;
+    color: #2c3e50;
     margin: 0;
     padding: 1em;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -32,14 +44,15 @@ h1 {
     align-items: center;
     gap: 0.5em;
     flex-wrap: nowrap;
+    font-family: 'Arial', sans-serif;
 }
 .title-home .colorful-title {
     margin: 0;
-    font-size: 2.3em;
+    font-size: 2.6em;
     line-height: 1.2em;
-    background: linear-gradient(90deg, #ff595e, #ffca3a, #8ac926, #1982c4, #6a4c93);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #2c3e50;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
 }
 /* Dimensioni icone nel titolo: ridotte per evitare che risultino enormi su tablet. */
 .title-home .icon-title {
@@ -97,6 +110,9 @@ button, .btn {
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
+    /* Utilizziamo Arial anche per i pulsanti per coerenza con il resto
+       dell'interfaccia. */
+    font-family: 'Arial', sans-serif;
 }
 button:hover, .btn:hover {
     background-color: #f4a261;
@@ -130,10 +146,11 @@ button:hover, .btn:hover {
 /* Responsività */
 @media (max-width: 768px) {
     body {
-        font-size: 1em;
+        font-size: 1.2em;
     }
     button, .btn {
-        font-size: 1em;
+        font-size: 1.1em;
         padding: 0.5em 1em;
+        font-family: 'Arial', sans-serif;
     }
 }
