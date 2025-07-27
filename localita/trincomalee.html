@@ -218,15 +218,17 @@
 </script>
 <!-- Effetto sonoro per la pressione dei pulsanti -->
 <script>
+// Precarichiamo il suono di click una sola volta. In questo modo il file MP3 viene
+// caricato al momento della creazione della pagina e poi riutilizzato a ogni
+// click. L'utilizzo di currentTime = 0 permette di riavviare il suono anche
+// quando il precedente non è ancora terminato.
+const clickSound = new Audio('../audio/click.mp3');
 function beep() {
-  // Riproduce un suono di click utilizzando il file MP3 fornito.
-  // In precedenza veniva usato un oscillatore audio; ora carichiamo il file
-  // ../audio/click.mp3 dalla cartella audio e lo riproduciamo.
   try {
-    const audio = new Audio('../audio/click.mp3');
-    audio.play();
+    clickSound.currentTime = 0;
+    clickSound.play();
   } catch (e) {
-    // Se il browser non supporta l'oggetto Audio, non viene riprodotto alcun suono
+    // Il browser potrebbe non supportare l'oggetto Audio
   }
 }
 document.addEventListener('DOMContentLoaded', () => {

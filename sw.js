@@ -1,11 +1,5 @@
-// Aggiorniamo il nome del cache per forzare la ricarica dei file quando viene
-// distribuita una nuova versione della webapp. Cambiando il numero di
-// versione, i file precedentemente memorizzati nel vecchio cache verranno
-// ignorati e sovrascritti con le nuove risorse.
-// Aggiorniamo il nome della cache per forzare il browser a scaricare
-// nuovamente tutte le risorse modificate. Incrementando la versione
-// evitiamo che il service worker serva copie obsolete dei file.
-const CACHE_NAME = 'srilanka-app-v3';
+// Aggiorniamo il nome del cache per includere le nuove risorse (icona e suono click).
+const CACHE_NAME = 'srilanka-app-v4';
 // Elenco dei file da memorizzare in cache. Oltre alle pagine principali
 // includiamo anche tutte le pagine delle località, così da poterle
 // visualizzare offline. Se in futuro verranno aggiunte nuove località,
@@ -26,7 +20,8 @@ const FILES_TO_CACHE = [
   '/localita/ella.html',
   '/localita/kandy.html',
   '/localita/pasikuda.html',
-  '/localita/trincomalee.html'
+  '/localita/trincomalee.html',
+  '/audio/click.mp3'
 ];
 
 self.addEventListener('install', e => {

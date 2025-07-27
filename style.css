@@ -41,9 +41,18 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+/* Dimensioni icone nel titolo: ridotte per evitare che risultino enormi su tablet. */
 .title-home .icon-title {
-    width: 60px;
+    width: 50px;
     height: auto;
+}
+
+/* Su dispositivi con larghezza massima 768px (tablet e smartphone) le icone sono ulteriormente
+   ridotte per mantenere armonia con il testo del titolo. */
+@media (max-width: 768px) {
+    .title-home .icon-title {
+        width: 35px;
+    }
 }
 /* Override h1 dentro la sezione home per eliminare il padding e il fondo */
 .title-home h1.colorful-title {
@@ -127,25 +136,4 @@ button:hover, .btn:hover {
         font-size: 1em;
         padding: 0.5em 1em;
     }
-}
-
-
-/* Migliora valutazione stelle e icona visto */
-.rating-stars {
-    font-size: 2.2em;
-    color: gold;
-    text-shadow: 1px 1px 2px #333;
-}
-.check-icon {
-    font-size: 2em;
-    color: #4CAF50;
-}
-.date-box {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #ff6600;
-}
-.symbol {
-    height: 40px;
-    margin-left: 10px;
 }

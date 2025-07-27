@@ -3,7 +3,8 @@
 <html lang="it">
 <head>
 <link href="manifest.json" rel="manifest"/>
-<link href="img/icon-192.png" rel="icon" sizes="192x192"/>
+<!-- Utilizziamo la stessa immagine banner anche come icona dell'app per uniformare l'icona visualizzata sul dispositivo. -->
+<link href="img/banner.png" rel="icon" sizes="192x192"/>
 <meta content="#ffcb77" name="theme-color"/>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -36,20 +37,18 @@
 <script>
 // aggiunge un effetto sonoro ad ogni pressione di un pulsante
 function beep() {
-  // Utilizziamo un'onda quadra con frequenza maggiore e volume attenuato
-  // per simulare il click di un tasto premuto. Il suono dura solo 50 ms.
   try {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     const ctx = new AudioContext();
     const oscillator = ctx.createOscillator();
     const gainNode = ctx.createGain();
-    oscillator.type = 'square';
-    oscillator.frequency.setValueAtTime(1000, ctx.currentTime);
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(600, ctx.currentTime);
     oscillator.connect(gainNode);
-    gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
     gainNode.connect(ctx.destination);
     oscillator.start();
-    oscillator.stop(ctx.currentTime + 0.05);
+    // durata breve dell'effetto
+    oscillator.stop(ctx.currentTime + 0.08);
   } catch (e) {
     // in caso di errori (browser incompatibile), ignora
   }
