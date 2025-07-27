@@ -15,8 +15,6 @@ const FILES_TO_CACHE = [
   '/manifest.json',
   // Includiamo l’icona banner affinché venga scaricata dal cache
   '/img/banner.png',
-  // Includiamo anche il nuovo logo del titolo
-  '/img/logo.png',
   '/img/splash-screen.png',
   '/img/mappa_fumetto.jpg',
   // Pagine delle località

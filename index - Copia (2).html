@@ -22,6 +22,12 @@
   <!-- Immagine a destra (tema Sri Lanka, elefante) -->
   <img src="elefante.png" alt="Elefante" class="icon-title"/>
 </div>
+<!-- Pulsanti per salvare e caricare i dati in locale -->
+<div class="data-buttons" style="margin: 1em 0; display: flex; gap: 10px; justify-content: center;">
+  <button id="btn-save-data">Salva dati</button>
+  <button id="btn-load-data">Carica dati</button>
+  <input type="file" id="file-input" accept="application/json" style="display: none;" />
+</div>
 <div class="map-container">
 <img alt="Mappa Sri Lanka" id="mappa" src="img/mappa_fumetto.jpg"/>
 <div class="marker" id="label-negombo" onclick="openLocation('negombo')" style="top: 25%; left: 30%;">Negombo</div>
@@ -30,14 +36,6 @@
 <div class="marker" id="label-kandy" onclick="openLocation('kandy')" style="top: 50%; left: 45%;">Kandy</div>
 <div class="marker" id="label-pasikuda" onclick="openLocation('pasikuda')" style="top: 45%; left: 80%;">Pasikuda</div>
 <div class="marker" id="label-trincomalee" onclick="openLocation('trincomalee')" style="top: 30%; left: 75%;">Trincomalee</div>
-</div>
-<!-- Spostiamo i pulsanti di salvataggio e caricamento dati sotto la mappa
-     per una disposizione più naturale. La struttura e gli id restano identici
-     per mantenere il funzionamento del codice JavaScript. -->
-<div class="data-buttons" style="margin: 1em 0; display: flex; gap: 10px; justify-content: center;">
-  <button id="btn-save-data">Salva dati</button>
-  <button id="btn-load-data">Carica dati</button>
-  <input type="file" id="file-input" accept="application/json" style="display: none;" />
 </div>
 <script src="script.js"></script>
 <!-- Effetto sonoro al click: beep -->

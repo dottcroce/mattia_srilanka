@@ -13,14 +13,15 @@
 </link></meta></head>
 <body>
 <div class="title-home">
-  <!-- Immagine a sinistra (tema Sri Lanka, tuktuk) -->
   <img src="tuktuk.png" alt="Tuk tuk" class="icon-title"/>
-  <!-- Logo centrale: utilizziamo il nuovo file logo.png come titolo grafico.
-       Per mantenere il layout uniforme, la dimensione dell'immagine è gestita
-       tramite la classe CSS logo-title definita in style.css. -->
-  <img src="img/logo.png" alt="Il viaggio in Sri Lanka di Mattia" class="logo-title"/>
-  <!-- Immagine a destra (tema Sri Lanka, elefante) -->
+  <h1 class="colorful-title">Il viaggio in Sri Lanka di Mattia</h1>
   <img src="elefante.png" alt="Elefante" class="icon-title"/>
+</div>
+<!-- Pulsanti per salvare e caricare i dati in locale -->
+<div class="data-buttons" style="margin: 1em 0; display: flex; gap: 10px; justify-content: center;">
+  <button id="btn-save-data">Salva dati</button>
+  <button id="btn-load-data">Carica dati</button>
+  <input type="file" id="file-input" accept="application/json" style="display: none;" />
 </div>
 <div class="map-container">
 <img alt="Mappa Sri Lanka" id="mappa" src="img/mappa_fumetto.jpg"/>
@@ -30,14 +31,6 @@
 <div class="marker" id="label-kandy" onclick="openLocation('kandy')" style="top: 50%; left: 45%;">Kandy</div>
 <div class="marker" id="label-pasikuda" onclick="openLocation('pasikuda')" style="top: 45%; left: 80%;">Pasikuda</div>
 <div class="marker" id="label-trincomalee" onclick="openLocation('trincomalee')" style="top: 30%; left: 75%;">Trincomalee</div>
-</div>
-<!-- Spostiamo i pulsanti di salvataggio e caricamento dati sotto la mappa
-     per una disposizione più naturale. La struttura e gli id restano identici
-     per mantenere il funzionamento del codice JavaScript. -->
-<div class="data-buttons" style="margin: 1em 0; display: flex; gap: 10px; justify-content: center;">
-  <button id="btn-save-data">Salva dati</button>
-  <button id="btn-load-data">Carica dati</button>
-  <input type="file" id="file-input" accept="application/json" style="display: none;" />
 </div>
 <script src="script.js"></script>
 <!-- Effetto sonoro al click: beep -->

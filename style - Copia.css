@@ -27,7 +27,12 @@ h1 {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-/* Titolo personalizzato in home con immagini */
+/* Titolo personalizzato in home con immagini e testo colorato */
+/* Stile per il blocco del titolo della home. Miglioriamo la leggibilità
+   scegliendo un colore di sfondo leggermente più chiaro e un colore di
+   testo più scuro per aumentare il contrasto. Inoltre utilizziamo il
+   font Arial e ingrandiamo ulteriormente la dimensione per una migliore
+   visibilità su tablet. */
 .title-home {
     background-color: #ffd97d;
     color: #2c3e50;
@@ -54,6 +59,9 @@ h1 {
     width: 50px;
     height: auto;
 }
+
+/* Su dispositivi con larghezza massima 768px (tablet e smartphone) le icone sono ulteriormente
+   ridotte per mantenere armonia con il testo del titolo. */
 @media (max-width: 768px) {
     .title-home .icon-title {
         width: 35px;
@@ -65,25 +73,6 @@ h1 {
     padding: 0 !important;
     margin: 0 !important;
     box-shadow: none !important;
-}
-
-/* Nuovo stile per l'immagine del logo al centro della home.
-   La larghezza è limitata al 60% del contenitore, con un massimo di 600px,
-   in modo che l'immagine si comporti come un titolo grafico senza
-   occupare troppo spazio. L'altezza viene regolata automaticamente. */
-.title-home .logo-title {
-    width: 60%;
-    max-width: 600px;
-    height: auto;
-}
-
-/* Su dispositivi piccoli, riduciamo la larghezza del logo per mantenere
-   un layout proporzionato e riservare spazio alle icone laterali. */
-@media (max-width: 768px) {
-    .title-home .logo-title {
-        width: 70%;
-        max-width: 320px;
-    }
 }
 
 /* Mappe nella home */
