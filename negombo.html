@@ -1,29 +1,46 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Negombo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NEGOMBO</title>
+  <link rel="stylesheet" href="../stile.css">
+  <script src="../script.js" defer></script>
 </head>
 <body>
-  <div class="pagina-localita">
-    <h1>Negombo</h1>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Negombo_beach.jpg/640px-Negombo_beach.jpg" alt="Negombo" class="immagine-localita">
-    <p class="descrizione">Negombo è una vivace città costiera famosa per le sue spiagge sabbiose e la laguna. Situata vicino all’aeroporto internazionale, è una porta d’accesso ideale allo Sri Lanka. Qui puoi trovare mercati di pesce, chiese coloniali e barche tradizionali. È il posto perfetto per rilassarsi all'inizio o alla fine del viaggio.</p>
-    <textarea placeholder="Scrivi qui i tuoi pensieri..." id="diario-negombo"></textarea>
-    <br>
-    <button onclick="salvaPensiero('negombo')">Salva</button>
-    <button onclick="location.href='index.html'">Torna alla Home</button>
+  <div class="titolo-container">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div class="box-data">5–7 agosto</div>
+      <div style="display: flex; gap: 10px;">
+        <button onclick="salva()">Salva</button>
+        <button onclick="tornaHome()">Home</button>
+      </div>
+    </div>
+    <h1>NEGOMBO <span id="spunta-verde">&#x2705;</span></h1>
   </div>
-  <script>
-    const saved = localStorage.getItem("diario-negombo");
-    if (saved) document.getElementById("diario-negombo").value = saved;
-    function salvaPensiero(localita) {
-      const testo = document.getElementById("diario-" + localita).value;
-      localStorage.setItem("diario-" + localita, testo);
-      alert("Pensiero salvato!");
-    }
-  </script>
+
+  <div class="contenuto">
+    <div class="descrizione-luogo">
+      <img src="../immagini/negombo.jpg" alt="NEGOMBO" class="immagine-luogo">
+      <div class="riquadro-descrizione">
+        <p>
+          NEGOMBO è una località meravigliosa dello Sri Lanka, perfetta per il nostro viaggio!
+        </p>
+        <p><strong>ALBERGO:</strong> <span class="nome-hotel">JETWING BLUE</span></p>
+      </div>
+    </div>
+
+    <div class="diario">
+      <div class="diario-header">
+        <span class="titolo-diario">Il mio diario</span>
+        <div class="check-container">
+          <input type="checkbox" id="checkbox-negombo" onchange="toggleSpunta('negombo')" />
+          <label for="checkbox-negombo">Località visitata</label>
+        </div>
+      </div>
+      <textarea id="testo-diario-negombo" placeholder="Scrivi qui i tuoi pensieri..."></textarea>
+    </div>
+  </div>
 </body>
 </html>

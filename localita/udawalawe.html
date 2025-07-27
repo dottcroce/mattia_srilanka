@@ -1,41 +1,10 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <title>Udawalawe</title>
-  <link rel="stylesheet" href="../style.css"/>
-  <style>
-    .titolo-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #ffcb77;
-      color: #3d405b;
-      padding: 1em;
-      margin: 0;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      font-family: 'Comic Sans MS', cursive;
-      position: relative;
-    }
-    .box-data {
-      position: absolute;
-      left: 10px;
-      top: 10px;
-      background-color: #ffe599;
-      color: #d62828;
-      padding: 8px 14px;
-      border: 2px dashed #d62828;
-      border-radius: 10px;
-      font-weight: bold;
-      font-size: 1.2em;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-    }
-    .titolo-container h1 {
-      width: 100%;
-      text-align: center;
-      margin: 0;
-      font-size: 2em;
-    }
+<meta charset="utf-8"/>
+<title>Udawalawe</title>
+<link href="../style.css" rel="stylesheet"/>
+<style>
     .top-section {
       display: flex;
       justify-content: center;
@@ -46,8 +15,9 @@
       gap: 30px;
     }
     .foto-localita {
-      width: 450px;
-      max-width: 95%;
+      width: 400px;
+      height: 250px;
+      object-fit: cover;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
@@ -62,17 +32,14 @@
       color: #444;
       line-height: 1.5em;
     }
-    .simbolo {
-      font-size: 1.3em;
-      margin-left: 10px;
-    }
     .diario-container {
+      width: 80%;
+      max-width: 700px;
       background: #fff8dc;
       border: 3px double #cba135;
       border-radius: 15px;
       padding: 20px;
       margin: 2em auto;
-      max-width: 700px;
       box-shadow: 0 6px 12px rgba(0,0,0,0.15);
       background-image: repeating-linear-gradient(
         to bottom,
@@ -90,7 +57,6 @@
       border: none;
       outline: none;
       resize: none;
-      line-height: 30px;
     }
     button {
       margin: 10px;
@@ -101,44 +67,146 @@
       border-radius: 8px;
       cursor: pointer;
     }
-  </style>
+</style>
+<style>
+    .header-location {
+      position: relative;
+      background-color: #ffcb77;
+      color: #3d405b;
+      padding: 1em 0.5em;
+      margin: 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      font-family: 'Comic Sans MS', cursive;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .header-location .date-box {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #ffe599;
+      color: #d62828;
+      padding: 4px 10px;
+      border: 2px dashed #d62828;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1em;
+      white-space: nowrap;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .header-location .header-content {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+    .header-location h1 {
+      margin: 0;
+      font-size: 2em;
+      display: flex;
+      align-items: center;
+      gap: 0.3em;
+    }
+    .header-location h1 .icon {
+      font-size: 0.8em;
+    }
+    .header-location input[type="checkbox"] {
+      width: 1.2em;
+      height: 1.2em;
+      cursor: pointer;
+    }
+</style>
 </head>
 <body style="background-color:#fffde7;">
-  <div class="titolo-container">
-    <div class="box-data">9–12 agosto</div>
-    <h1>Udawalawe <span class="simbolo">🐘</span></h1>
+<div class="header-location">
+  <div class="date-box">12–14 agosto</div>
+  <div class="header-content">
+    <input type="checkbox" id="visit-checkbox" />
+    <h1>Udawalawe <span class="icon">🐘</span></h1>
   </div>
+</div>
 
-  <div class="top-section">
-    <img src="../img/localita/udawalawe.jpg" alt="Foto di Udawalawe" class="foto-localita"/>
-    <div class="descrizione">Udawalawe è conosciuto per il suo Parco Nazionale, dove si possono ammirare elefanti selvatici da vicino. 
-Il parco offre safari emozionanti in jeep, perfetti per un’avventura in famiglia. 
-La natura incontaminata e i panorami aperti lo rendono un luogo indimenticabile.</div>
+<div class="top-section">
+  <img alt="Foto di Udawalawe" class="foto-localita" src="../img/localita/udawalawe.jpg"/>
+  <div class="descrizione">
+    Una delle attrazioni più grandi di Udawalawe è l’Udawalawe National Park che si estende nel sud dello <strong>Sri Lanka</strong>, tra le province di Sabaragamuwa e Uva. Le cose più belle da vedere sono: elefanti asiatici, bufali selvatici, scimmie, coccodrilli, cervi e varani.
+    <br/><br/><strong>ALBERGO:</strong> Dahalia Resort
   </div>
+</div>
 
-  <div class="diario-container">
-    <textarea id="diario" placeholder="Scrivi qui i tuoi pensieri..." rows="10"></textarea>
+<div class="diario-container">
+  <div class="stars">
+    <span class="star">★</span>
+    <span class="star">★</span>
+    <span class="star">★</span>
+    <span class="star">★</span>
+    <span class="star">★</span>
   </div>
+  <textarea id="diario" placeholder="Scrivi qui i tuoi pensieri..." rows="10"></textarea>
+  <div style="text-align:center; margin-top: 1em;">
+    <button onclick="salva()">Salva</button>
+    <button onclick="tornaHome()">Home</button>
+  </div>
+</div>
 
-  <button onclick="salva()">Salva</button>
-  <button onclick="tornaHome()">Home</button>
-
-  <script>
-    const key = "diario_udawalawe";
-    const diario = document.getElementById("diario");
-    diario.value = localStorage.getItem(key) || "";
-
-    function salva() {
-      localStorage.setItem(key, diario.value);
-      alert("Pensieri salvati!");
+<script>
+(function() {
+  const diaryKey = 'diario_udawalawe';
+  const ratingKey = 'rating_udawalawe';
+  const visitKey = 'visit-udawalawe';
+  const diario = document.getElementById('diario');
+  let lastSavedValue = localStorage.getItem(diaryKey) || '';
+  diario.value = lastSavedValue;
+  let hasUnsavedChanges = false;
+  diario.addEventListener('input', () => {
+    hasUnsavedChanges = diario.value !== lastSavedValue;
+  });
+  window.addEventListener('beforeunload', (e) => {
+    if (hasUnsavedChanges) {
+      e.preventDefault();
+      e.returnValue = '';
     }
-
-    function tornaHome() {
-      if (diario.value !== localStorage.getItem(key)) {
-        if (!confirm("Non hai salvato le modifiche. Vuoi davvero uscire?")) return;
-      }
-      window.location.href = "../index.html";
+  });
+  window.salva = function salva() {
+    localStorage.setItem(diaryKey, diario.value);
+    lastSavedValue = diario.value;
+    hasUnsavedChanges = false;
+    alert('Pensieri salvati!');
+  };
+  window.tornaHome = function tornaHome() {
+    if (hasUnsavedChanges) {
+      if (!confirm('Non hai salvato le modifiche. Vuoi davvero uscire?')) return;
     }
-  </script>
+    window.location.href = '../index.html';
+  };
+  document.addEventListener('DOMContentLoaded', () => {
+    const stars = document.querySelectorAll('.stars .star');
+    let currentRating = parseInt(localStorage.getItem(ratingKey)) || 0;
+    const updateStars = () => {
+      stars.forEach((star, idx) => {
+        if (idx < currentRating) {
+          star.classList.add('selected');
+        } else {
+          star.classList.remove('selected');
+        }
+      });
+    };
+    updateStars();
+    stars.forEach((star, idx) => {
+      star.addEventListener('click', () => {
+        currentRating = idx + 1;
+        localStorage.setItem(ratingKey, String(currentRating));
+        updateStars();
+      });
+    });
+    const visitCheckbox = document.getElementById('visit-checkbox');
+    visitCheckbox.checked = localStorage.getItem(visitKey) === 'true';
+    visitCheckbox.addEventListener('change', () => {
+      localStorage.setItem(visitKey, visitCheckbox.checked.toString());
+    });
+  });
+})();
+</script>
 </body>
 </html>

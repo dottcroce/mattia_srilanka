@@ -1,29 +1,46 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Pasikuda</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PASIKUDA</title>
+  <link rel="stylesheet" href="../stile.css">
+  <script src="../script.js" defer></script>
 </head>
 <body>
-  <div class="pagina-localita">
-    <h1>Pasikuda</h1>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Pasikudah_beach_-_panoramio.jpg/640px-Pasikudah_beach_-_panoramio.jpg" alt="Pasikuda" class="immagine-localita">
-    <p class="descrizione">Pasikuda è conosciuta per le sue acque calme e cristalline e la lunga spiaggia sabbiosa. Ideale per il nuoto e il relax, è una delle località balneari più belle della costa orientale. Un luogo tranquillo per godersi il sole in un’atmosfera tropicale.</p>
-    <textarea placeholder="Scrivi qui i tuoi pensieri..." id="diario-pasikuda"></textarea>
-    <br>
-    <button onclick="salvaPensiero('pasikuda')">Salva</button>
-    <button onclick="location.href='index.html'">Torna alla Home</button>
+  <div class="titolo-container">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div class="box-data">14–16 agosto</div>
+      <div style="display: flex; gap: 10px;">
+        <button onclick="salva()">Salva</button>
+        <button onclick="tornaHome()">Home</button>
+      </div>
+    </div>
+    <h1>PASIKUDA <span id="spunta-verde">&#x2705;</span></h1>
   </div>
-  <script>
-    const saved = localStorage.getItem("diario-pasikuda");
-    if (saved) document.getElementById("diario-pasikuda").value = saved;
-    function salvaPensiero(localita) {
-      const testo = document.getElementById("diario-" + localita).value;
-      localStorage.setItem("diario-" + localita, testo);
-      alert("Pensiero salvato!");
-    }
-  </script>
+
+  <div class="contenuto">
+    <div class="descrizione-luogo">
+      <img src="../immagini/pasikuda.jpg" alt="PASIKUDA" class="immagine-luogo">
+      <div class="riquadro-descrizione">
+        <p>
+          PASIKUDA è una località meravigliosa dello Sri Lanka, perfetta per il nostro viaggio!
+        </p>
+        <p><strong>ALBERGO:</strong> <span class="nome-hotel">Uga Bay Resort</span></p>
+      </div>
+    </div>
+
+    <div class="diario">
+      <div class="diario-header">
+        <span class="titolo-diario">Il mio diario</span>
+        <div class="check-container">
+          <input type="checkbox" id="checkbox-pasikuda" onchange="toggleSpunta('pasikuda')" />
+          <label for="checkbox-pasikuda">Località visitata</label>
+        </div>
+      </div>
+      <textarea id="testo-diario-pasikuda" placeholder="Scrivi qui i tuoi pensieri..."></textarea>
+    </div>
+  </div>
 </body>
 </html>

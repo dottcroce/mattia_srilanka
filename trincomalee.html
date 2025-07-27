@@ -1,29 +1,218 @@
 <!DOCTYPE html>
+
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Trincomalee</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="pagina-localita">
-    <h1>Trincomalee</h1>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Koneswaram_Temple%2C_Trincomalee.jpg/640px-Koneswaram_Temple%2C_Trincomalee.jpg" alt="Trincomalee" class="immagine-localita">
-    <p class="descrizione">Trincomalee, sulla costa orientale, offre mare, storia e spiritualità. Celebre per il Tempio di Koneswaram e la baia naturale, è anche un ottimo punto per osservare balene e delfini. Le sue spiagge sono tra le più affascinanti del paese.</p>
-    <textarea placeholder="Scrivi qui i tuoi pensieri..." id="diario-trincomalee"></textarea>
-    <br>
-    <button onclick="salvaPensiero('trincomalee')">Salva</button>
-    <button onclick="location.href='index.html'">Torna alla Home</button>
-  </div>
-  <script>
-    const saved = localStorage.getItem("diario-trincomalee");
-    if (saved) document.getElementById("diario-trincomalee").value = saved;
-    function salvaPensiero(localita) {
-      const testo = document.getElementById("diario-" + localita).value;
-      localStorage.setItem("diario-" + localita, testo);
-      alert("Pensiero salvato!");
+<meta charset="utf-8"/>
+<title>Trincomalee</title>
+<link href="../style.css" rel="stylesheet"/>
+<style>
+    .titolo-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffcb77;
+      color: #3d405b;
+      padding: 1em;
+      margin: 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      font-family: 'Comic Sans MS', cursive;
+      position: relative;
     }
-  </script>
-</body>
+    .box-data {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      background-color: #ffe599;
+      color: #d62828;
+      padding: 8px 14px;
+      border: 2px dashed #d62828;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1.2em;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
+    .titolo-container h1 {
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      font-size: 2em;
+    }
+    .top-section {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin: 20px auto;
+      max-width: 1000px;
+      gap: 30px;
+    }
+    .foto-localita {
+      width: 450px;
+      max-width: 95%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .descrizione {
+      flex: 1;
+      background: #fff8dc;
+      border: 2px dashed #cba135;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.1em;
+      font-family: 'Comic Sans MS', cursive;
+      color: #444;
+      line-height: 1.5em;
+    }
+    .simbolo {
+      font-size: 1.3em;
+      margin-left: 10px;
+    }
+    .diario-container {
+      background: #fff8dc;
+      border: 3px double #cba135;
+      border-radius: 15px;
+      padding: 20px;
+      margin: 2em auto;
+      max-width: 700px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      background-image: repeating-linear-gradient(
+        to bottom,
+        #fff8dc,
+        #fff8dc 29px,
+        #e0d8b0 30px
+      );
+    }
+    textarea {
+      width: 100%;
+      height: 300px;
+      font-family: 'Comic Sans MS', cursive;
+      font-size: 1.1em;
+      background: transparent;
+      border: none;
+      outline: none;
+      resize: none;
+      line-height: 30px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #ffcb77;
+      border: 2px solid #e07a5f;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body style="background-color:#fffde7;">
+<div class="titolo-container">
+<div class="top-section">
+<img alt="Foto di Trincomalee" class="foto-localita" src="../img/localita/trincomalee.jpg"/>
+<div class="descrizione">Trincomalee si trova sulla costa nord-orientale dello <strong>Sri Lanka</strong>, a circa 240 km da Colombo. È famosa per il suo porto naturale poco profondo, uno dei più grandi al mondo.<br/><br/><strong>ALBERGO:</strong> Trinco Blue by Cinnamon</div>
+</div>
+<div class="diario-container">
+<div class="stars">
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+</div>
+<textarea id="diario" placeholder="Scrivi qui i tuoi pensieri..." rows="10"></textarea>
+</div>
+
+
+    <!--
+      La logica sottostante è stata arricchita per gestire correttamente le modifiche
+      al diario e il sistema di valutazione a stelle. Ora l’alert di conferma
+      compare solo quando il contenuto del diario è stato modificato dall’ultima
+      operazione di salvataggio. Inoltre, le stelle diventano interattive e la
+      valutazione persiste tra una visita e l’altra grazie a localStorage.
+    -->
+    <script>
+    (function() {
+      // chiave per il diario di Trincomalee
+      const diaryKey = "diario_trincomalee";
+      const diario = document.getElementById('diario');
+      // recupera il contenuto salvato e inizializza lo stato
+      let lastSavedValue = localStorage.getItem(diaryKey) || "";
+      diario.value = lastSavedValue;
+      let hasUnsavedChanges = false;
+
+      // monitora l'input per rilevare modifiche rispetto all'ultima versione salvata
+      diario.addEventListener('input', () => {
+        hasUnsavedChanges = diario.value !== lastSavedValue;
+      });
+
+      // Avvisa l'utente se tenta di uscire dalla pagina con modifiche non salvate
+      window.addEventListener('beforeunload', (e) => {
+        if (hasUnsavedChanges) {
+          e.preventDefault();
+          e.returnValue = '';
+        }
+      });
+
+      // salva il diario e aggiorna lo stato delle modifiche
+      window.salva = function salva() {
+        localStorage.setItem(diaryKey, diario.value);
+        lastSavedValue = diario.value;
+        hasUnsavedChanges = false;
+        alert('Pensieri salvati!');
+      };
+
+      // torna alla home, chiedendo conferma solo se ci sono modifiche non salvate
+      window.tornaHome = function tornaHome() {
+        if (hasUnsavedChanges) {
+          if (!confirm('Non hai salvato le modifiche. Vuoi davvero uscire?')) return;
+        }
+        window.location.href = '../index.html';
+      };
+
+      // gestione delle stelle di valutazione
+      document.addEventListener('DOMContentLoaded', () => {
+        const stars = document.querySelectorAll('.stars .star');
+        const ratingKey = 'rating_trincomalee';
+        let currentRating = parseInt(localStorage.getItem(ratingKey)) || 0;
+
+        // aggiorna l'aspetto delle stelle in base al valore corrente
+        const updateStars = () => {
+          stars.forEach((star, idx) => {
+            if (idx < currentRating) {
+              star.classList.add('selected');
+            } else {
+              star.classList.remove('selected');
+            }
+          });
+        };
+        updateStars();
+
+        // al click su una stella aggiorna la valutazione e la salva
+        stars.forEach((star, idx) => {
+          star.addEventListener('click', () => {
+            currentRating = idx + 1;
+            localStorage.setItem(ratingKey, String(currentRating));
+            updateStars();
+          });
+        });
+      });
+    })();
+    </script>
+<script>
+function toggleVisit(icon) {
+  const key = "visit-" + window.location.pathname.split("/").pop().replace(".html", "");
+  const visited = localStorage.getItem(key) === "true";
+  localStorage.setItem(key, (!visited).toString());
+  icon.src = (!visited) ? "../img/checkbox-checked.png" : "../img/checkbox-empty.png";
+  icon.alt = (!visited) ? "Visitato" : "Non visitato";
+}
+document.addEventListener("DOMContentLoaded", () => {
+  const icon = document.getElementById("visit-icon");
+  const key = "visit-" + window.location.pathname.split("/").pop().replace(".html", "");
+  const visited = localStorage.getItem(key) === "true";
+  if (visited && icon) {
+    icon.src = "../img/checkbox-checked.png";
+    icon.alt = "Visitato";
+  }
+});
+</script></body>
 </html>

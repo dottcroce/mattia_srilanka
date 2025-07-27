@@ -1,26 +1,33 @@
 <!DOCTYPE html>
+
 <html lang="it">
 <head>
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" sizes="192x192" href="img/icon-192.png">
-  <meta name="theme-color" content="#ffcb77">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Il viaggio in Sri Lanka di Mattia</title>
-  <link rel="stylesheet" href="style.css"/>
-</head>
+<link href="manifest.json" rel="manifest"/>
+<link href="img/icon-192.png" rel="icon" sizes="192x192"/>
+<meta content="#ffcb77" name="theme-color"/>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Il viaggio in Sri Lanka di Mattia</title>
+<link href="style.css" rel="stylesheet">
+</link></meta></head>
 <body>
-  <h1>Il viaggio in Sri Lanka di Mattia</h1>
-  <div class="map-container">
-    <img src="img/mappa_fumetto.jpg" alt="Mappa Sri Lanka" id="mappa"/>
-    <div class="marker" style="top: 25%; left: 30%;" onclick="openLocation('negombo')">Negombo</div>
-    <div class="marker" style="top: 70%; left: 50%;" onclick="openLocation('udawalawe')">Udawalawe</div>
-    <div class="marker" style="top: 60%; left: 60%;" onclick="openLocation('ella')">Ella</div>
-    <div class="marker" style="top: 50%; left: 45%;" onclick="openLocation('kandy')">Kandy</div>
-    <div class="marker" style="top: 45%; left: 80%;" onclick="openLocation('pasikuda')">Pasikuda</div>
-    <div class="marker" style="top: 30%; left: 75%;" onclick="openLocation('trincomalee')">Trincomalee</div>
-  </div>
-  <script src="script.js"></script>
+<h1>Il viaggio in Sri Lanka di Mattia</h1>
+<!-- Pulsanti per salvare e caricare i dati in locale -->
+<div class="data-buttons" style="margin: 1em 0; display: flex; gap: 10px; justify-content: center;">
+  <button id="btn-save-data">Salva dati</button>
+  <button id="btn-load-data">Carica dati</button>
+  <input type="file" id="file-input" accept="application/json" style="display: none;" />
+</div>
+<div class="map-container">
+<img alt="Mappa Sri Lanka" id="mappa" src="img/mappa_fumetto.jpg"/>
+<div class="marker" id="label-negombo" onclick="openLocation('negombo')" style="top: 25%; left: 30%;">Negombo</div>
+<div class="marker" id="label-udawalawe" onclick="openLocation('udawalawe')" style="top: 70%; left: 50%;">Udawalawe</div>
+<div class="marker" id="label-ella" onclick="openLocation('ella')" style="top: 60%; left: 60%;">Ella</div>
+<div class="marker" id="label-kandy" onclick="openLocation('kandy')" style="top: 50%; left: 45%;">Kandy</div>
+<div class="marker" id="label-pasikuda" onclick="openLocation('pasikuda')" style="top: 45%; left: 80%;">Pasikuda</div>
+<div class="marker" id="label-trincomalee" onclick="openLocation('trincomalee')" style="top: 30%; left: 75%;">Trincomalee</div>
+</div>
+<script src="script.js"></script>
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -28,6 +35,77 @@
         .then(() => console.log('Service Worker registrato!'));
     });
   }
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const localita = ["ella", "kandy", "negombo", "pasikuda", "trincomalee", "udawalawe"];
+  localita.forEach(name => {
+    const key = "visit-" + name;
+    const visited = localStorage.getItem(key) === "true";
+    const label = document.getElementById("label-" + name);
+    if (visited && label && !label.querySelector("img")) {
+      const img = document.createElement("img");
+      img.src = "img/checkbox-checked.png";
+      img.alt = "Visitato";
+      img.style.width = "20px";
+      img.style.marginRight = "6px";
+      img.style.verticalAlign = "middle";
+      label.prepend(img);
+    }
+  });
+  // Gestione salvataggio e caricamento dei dati
+  const saveBtn = document.getElementById('btn-save-data');
+  const loadBtn = document.getElementById('btn-load-data');
+  const fileInput = document.getElementById('file-input');
+  if (saveBtn) {
+    saveBtn.addEventListener('click', () => {
+      const data = {};
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && (key.startsWith('diario_') || key.startsWith('visit-') || key.startsWith('rating_'))) {
+          data[key] = localStorage.getItem(key);
+        }
+      }
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'diario_viaggio_data.json';
+      document.body.appendChild(a);
+      a.click();
+      URL.revokeObjectURL(url);
+      a.remove();
+    });
+  }
+  if (loadBtn) {
+    loadBtn.addEventListener('click', () => {
+      fileInput.click();
+    });
+  }
+  if (fileInput) {
+    fileInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = e => {
+          try {
+            const loadedData = JSON.parse(e.target.result);
+            Object.keys(loadedData).forEach(key => {
+              if (key.startsWith('diario_') || key.startsWith('visit-') || key.startsWith('rating_')) {
+                localStorage.setItem(key, loadedData[key]);
+              }
+            });
+            alert('Dati caricati! La pagina verrà aggiornata.');
+            location.reload();
+          } catch (err) {
+            alert('File non valido');
+          }
+        };
+        reader.readAsText(file);
+      }
+    });
+  }
+});
 </script>
 </body>
 </html>

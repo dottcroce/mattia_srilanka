@@ -69,3 +69,65 @@ textarea {
   height: 450px;
   font-size: 1.4em;
 }
+
+
+/* Font giocoso */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+body {
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.2em;
+    line-height: 1.6em;
+    background-color: #fef6e4;
+    color: #333;
+}
+
+button, .btn {
+    font-size: 1.1em;
+    padding: 0.6em 1.2em;
+    background-color: #ffcc70;
+    border: 2px solid #f4a261;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+button:hover, .btn:hover {
+    background-color: #f4a261;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Stelle valutazione */
+.stars {
+  display: flex;
+  gap: 0.4em;
+  font-size: 2em;
+  cursor: pointer;
+}
+.star {
+  color: lightgray;
+}
+.star.selected {
+  color: gold;
+}
+
+/* Marker animati (Leaflet) */
+.leaflet-marker-icon.animated {
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    font-size: 1em;
+  }
+
+  button, .btn {
+    font-size: 1em;
+    padding: 0.5em 1em;
+  }
+}
