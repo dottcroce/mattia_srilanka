@@ -7,38 +7,23 @@
 <link href="../style.css" rel="stylesheet"/>
 <style>
     .top-section {
-      /* Per un layout ottimizzato in verticale usiamo un flex container
-         con direzione di colonna. In questo modo l'immagine e la
-         descrizione vengono impilate una sopra l'altra (prima l'immagine,
-         poi la scheda informativa) e risultano ben visibili su
-         schermi in posizione verticale. */
       display: flex;
-      flex-direction: column;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
       margin: 20px auto;
       max-width: 1000px;
-      gap: 20px;
+      gap: 30px;
     }
     .foto-localita {
-      /* Rendiamo l'immagine un po' più grande rispetto alla versione
-         precedente per sfruttare meglio lo spazio verticale. La
-         larghezza si adatta al contenitore fino a un massimo di 500px.
-         L'altezza è proporzionata (auto) grazie a object-fit. */
-      width: 90%;
-      max-width: 500px;
-      height: auto;
+      width: 400px;
+      height: 250px;
       object-fit: cover;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     .descrizione {
-      /* La scheda informativa occupa quasi tutta la larghezza in un layout
-         verticale. Non utilizziamo flex: 1 perché la sezione è ora
-         impilata sotto l'immagine. Impostiamo una larghezza del 90%
-         con un massimo per evitare linee troppo lunghe. */
-      width: 90%;
-      max-width: 700px;
+      flex: 1;
       background: #fff8dc;
       border: 2px dashed #cba135;
       padding: 20px;
@@ -94,11 +79,8 @@
     }
     .map-wrapper {
       position: relative;
-      /* La mappa occupa quasi tutta la larghezza disponibile per un uso
-         verticale. Utilizziamo una larghezza percentuale con un massimo
-         per evitare che diventi troppo grande su schermi molto ampi. */
-      width: 90%;
-      max-width: 500px;
+      width: 350px;
+      max-width: 90%;
     }
     .map-wrapper img {
       width: 100%;
@@ -164,7 +146,7 @@
 <body style="background-color:#fffde7;">
 <!-- Titolo della località -->
 <h1 class="titolo-localita">Negombo</h1>
-  <!-- Sezione che mostra i giorni di permanenza e un simbolo caratteristico della località -->
+  <!-- Sezione che mostra i giorni di permanenza e un simbolo caratteristico -->
   <div class="info-localita">
     <div class="date-box">
       martedì 5 agosto 2025<br/>
