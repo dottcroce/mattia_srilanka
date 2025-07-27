@@ -1,4 +1,15 @@
-const CACHE_NAME = 'srilanka-app-v1';
+// Aggiorniamo il nome del cache per forzare la ricarica dei file quando viene
+// distribuita una nuova versione della webapp. Cambiando il numero di
+// versione, i file precedentemente memorizzati nel vecchio cache verranno
+// ignorati e sovrascritti con le nuove risorse.
+// Aggiorniamo il nome della cache per forzare il browser a scaricare
+// nuovamente tutte le risorse modificate. Incrementando la versione
+// evitiamo che il service worker serva copie obsolete dei file.
+const CACHE_NAME = 'srilanka-app-v3';
+// Elenco dei file da memorizzare in cache. Oltre alle pagine principali
+// includiamo anche tutte le pagine delle località, così da poterle
+// visualizzare offline. Se in futuro verranno aggiunte nuove località,
+// sarà sufficiente aggiungere il relativo percorso in questo array.
 const FILES_TO_CACHE = [
   '/',
   '/index.html',
@@ -9,6 +20,7 @@ const FILES_TO_CACHE = [
   '/img/icon-512.png',
   '/img/splash-screen.png',
   '/img/mappa_fumetto.jpg',
+  // Pagine delle località
   '/localita/negombo.html',
   '/localita/udawalawe.html',
   '/localita/ella.html',

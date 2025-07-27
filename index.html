@@ -11,7 +11,11 @@
 <link href="style.css" rel="stylesheet">
 </link></meta></head>
 <body>
-<h1>Il viaggio in Sri Lanka di Mattia</h1>
+<div class="title-home">
+  <img src="tuktuk.png" alt="Tuk tuk" class="icon-title"/>
+  <h1 class="colorful-title">Il viaggio in Sri Lanka di Mattia</h1>
+  <img src="elefante.png" alt="Elefante" class="icon-title"/>
+</div>
 <!-- Pulsanti per salvare e caricare i dati in locale -->
 <div class="data-buttons" style="margin: 1em 0; display: flex; gap: 10px; justify-content: center;">
   <button id="btn-save-data">Salva dati</button>
@@ -28,6 +32,38 @@
 <div class="marker" id="label-trincomalee" onclick="openLocation('trincomalee')" style="top: 30%; left: 75%;">Trincomalee</div>
 </div>
 <script src="script.js"></script>
+<!-- Effetto sonoro al click: beep -->
+<script>
+// aggiunge un effetto sonoro ad ogni pressione di un pulsante
+function beep() {
+  // Utilizziamo un'onda quadra con frequenza maggiore e volume attenuato
+  // per simulare il click di un tasto premuto. Il suono dura solo 50 ms.
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const ctx = new AudioContext();
+    const oscillator = ctx.createOscillator();
+    const gainNode = ctx.createGain();
+    oscillator.type = 'square';
+    oscillator.frequency.setValueAtTime(1000, ctx.currentTime);
+    oscillator.connect(gainNode);
+    gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
+    gainNode.connect(ctx.destination);
+    oscillator.start();
+    oscillator.stop(ctx.currentTime + 0.05);
+  } catch (e) {
+    // in caso di errori (browser incompatibile), ignora
+  }
+}
+document.addEventListener('DOMContentLoaded', () => {
+  // associa il beep a tutti i pulsanti in home
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      beep();
+    });
+  });
+});
+</script>
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {

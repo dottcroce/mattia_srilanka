@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="it">
 <head>
 <meta charset="utf-8"/>
 <title>Negombo</title>
 <link href="../style.css" rel="stylesheet"/>
 <style>
-    /* Stili di pagina */
     .top-section {
       display: flex;
       justify-content: center;
@@ -28,10 +28,11 @@
       border: 2px dashed #cba135;
       padding: 20px;
       border-radius: 10px;
-      font-size: 1.1em;
-      font-family: 'Comic Sans MS', cursive;
+      /* carattere più leggibile e dimensione maggiore */
+      font-size: 1.3em;
+      font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
       color: #444;
-      line-height: 1.5em;
+      line-height: 1.6em;
     }
     .diario-container {
       width: 80%;
@@ -52,8 +53,8 @@
     textarea {
       width: 100%;
       height: 300px;
-      font-family: 'Comic Sans MS', cursive;
-      font-size: 1.1em;
+      font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+      font-size: 1.3em;
       background: transparent;
       border: none;
       outline: none;
@@ -62,89 +63,130 @@
     button {
       margin: 10px;
       padding: 10px 20px;
-      font-family: 'Comic Sans MS', cursive;
+      font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
       background-color: #ffcb77;
       border: 2px solid #e07a5f;
       border-radius: 8px;
       cursor: pointer;
+      font-size: 1.2em;
     }
-</style>
-<!-- Stili per la barra superiore -->
-<style>
-    .header-location {
-      position: relative;
-      background-color: #ffcb77;
-      color: #3d405b;
-      padding: 1em 0.5em;
-      margin: 0;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      font-family: 'Comic Sans MS', cursive;
+    /* Map and diary layout styles */
+    .map-section {
       display: flex;
-      align-items: center;
       justify-content: center;
+      margin: 1em auto;
     }
-    .header-location .date-box {
+    .map-wrapper {
+      position: relative;
+      width: 350px;
+      max-width: 90%;
+    }
+    .map-wrapper img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .map-marker {
       position: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: #ffe599;
-      color: #d62828;
-      padding: 4px 10px;
-      border: 2px dashed #d62828;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 1em;
-      white-space: nowrap;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      width: 16px;
+      height: 16px;
+      background-color: #d62828;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      border: 2px solid #fff;
     }
-    .header-location .header-content {
+    .diario-header {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 0.5em;
+      margin-bottom: 0.5em;
+      font-size: 1.1em;
     }
-    .header-location h1 {
-      margin: 0;
-      font-size: 2em;
+    .diario-header .visit-section,
+    .diario-header .rating-section {
       display: flex;
       align-items: center;
       gap: 0.3em;
     }
-    .header-location h1 .icon {
-      font-size: 0.8em;
+    .diario-header .rating-section .stars {
+      /* ingrandisci le stelle della valutazione per una migliore leggibilità */
+      font-size: 2.2em;
     }
-    .header-location input[type="checkbox"] {
-      width: 1.2em;
-      height: 1.2em;
-      cursor: pointer;
+
+    /* Stili personalizzati per le date di permanenza e il simbolo caratteristico */
+    .info-localita {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin: 10px auto;
+      flex-wrap: wrap;
+    }
+    .date-box {
+      background-color: #ffe599;
+      color: #d62828;
+      padding: 8px 14px;
+      border: 2px dashed #d62828;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1.1em;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
+    .simbolo {
+      font-size: 2em;
+    }
+    /* Ingrandisci e colora il checkbox di visita e testi */
+    .diario-header .visit-section input[type="checkbox"] {
+      transform: scale(1.5);
+      accent-color: #d62828;
+      margin-right: 4px;
+    }
+    .diario-header .visit-section span,
+    .diario-header .rating-section span {
+      font-size: 1.2em;
     }
 </style>
 </head>
 <body style="background-color:#fffde7;">
-<!-- Barra superiore con data, checkbox e titolo -->
-<div class="header-location">
-  <div class="date-box">5–7 agosto</div>
-  <div class="header-content">
-    <input type="checkbox" id="visit-checkbox" />
-    <h1>Negombo <span class="icon">🏖️</span></h1>
-  </div>
-</div>
-
+<!-- Titolo della località -->
+<h1 class="titolo-localita">Negombo</h1>
+ <!-- Box date di permanenza e simbolo caratteristico -->
+ <div class="info-localita">
+   <div class="date-box">
+     martedì 5 agosto 2025<br/>
+     mercoledì 6 agosto 2025
+   </div>
+   <div class="simbolo">🏖️</div>
+ </div>
 <div class="top-section">
   <img alt="Foto di Negombo" class="foto-localita" src="../img/localita/negombo.jpg"/>
-  <div class="descrizione">
-    Negombo è una località meravigliosa dello <strong>Sri Lanka</strong>, perfetta per il nostro viaggio!
-    <br/><br/><strong>ALBERGO:</strong> Jetwing Blue
+  <div class="descrizione">Negombo è una cittadina costiera situata sulla costa occidentale dello <strong>SRI LANKA</strong> è spesso scelta come prima o ultima tappa dai viaggiatori per la sua comodità e atmosfera rilassata.<br/><br/><strong>ALBERGO:</strong> JETWING BLUE</div>
+</div>
+<!-- Mappa con località evidenziata -->
+<div class="map-section">
+  <div class="map-wrapper">
+    <img src="../img/mappa_fumetto.jpg" alt="Mappa Sri Lanka"/>
+    <!-- Marker per Negombo: approssimativamente sulla costa occidentale -->
+    <div class="map-marker" style="top: 30%; left: 25%;"></div>
   </div>
 </div>
-
 <div class="diario-container">
-  <div class="stars">
-    <span class="star">★</span>
-    <span class="star">★</span>
-    <span class="star">★</span>
-    <span class="star">★</span>
-    <span class="star">★</span>
+  <div class="diario-header">
+    <div class="visit-section">
+      <span>Visitato</span>
+      <input type="checkbox" id="visit-checkbox" />
+    </div>
+    <div class="rating-section">
+      <span>Valutazione</span>
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+      </div>
+    </div>
   </div>
   <textarea id="diario" placeholder="Scrivi qui i tuoi pensieri..." rows="10"></textarea>
   <div style="text-align:center; margin-top: 1em;">
@@ -154,6 +196,7 @@
 </div>
 
 <script>
+// Script per diario, stelle e checkbox "visitata"
 (function() {
   const diaryKey = 'diario_negombo';
   const ratingKey = 'rating_negombo';
@@ -184,6 +227,7 @@
     window.location.href = '../index.html';
   };
   document.addEventListener('DOMContentLoaded', () => {
+    // Gestione stelle
     const stars = document.querySelectorAll('.stars .star');
     let currentRating = parseInt(localStorage.getItem(ratingKey)) || 0;
     const updateStars = () => {
@@ -203,6 +247,7 @@
         updateStars();
       });
     });
+    // Gestione checkbox "visitato"
     const visitCheckbox = document.getElementById('visit-checkbox');
     visitCheckbox.checked = localStorage.getItem(visitKey) === 'true';
     visitCheckbox.addEventListener('change', () => {
@@ -210,6 +255,36 @@
     });
   });
 })();
+</script>
+<!-- Effetto sonoro per la pressione dei pulsanti -->
+<script>
+function beep() {
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const ctx = new AudioContext();
+    const oscillator = ctx.createOscillator();
+    const gainNode = ctx.createGain();
+    oscillator.type = 'square';
+    oscillator.frequency.setValueAtTime(1000, ctx.currentTime);
+    oscillator.connect(gainNode);
+    // riduciamo il volume per creare un click discreto
+    gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
+    gainNode.connect(ctx.destination);
+    oscillator.start();
+    // durata brevissima dell'effetto (50 ms) per simulare la pressione di un tasto
+    oscillator.stop(ctx.currentTime + 0.05);
+  } catch (e) {
+    // Browser non supporta AudioContext
+  }
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      beep();
+    });
+  });
+});
 </script>
 </body>
 </html>

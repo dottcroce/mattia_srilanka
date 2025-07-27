@@ -29,3 +29,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+
+// --- Effetto sonoro click ---
+document.querySelectorAll('button, .btn, .home-button, .save-button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const clickSound = new Audio('click.mp3');
+    clickSound.play();
+  });
+});

@@ -3,7 +3,7 @@
 <html lang="it">
 <head>
 <meta charset="utf-8"/>
-<title>Ella</title>
+<title>Trincomalee</title>
 <link href="../style.css" rel="stylesheet"/>
 <style>
     .top-section {
@@ -31,8 +31,7 @@
       /* carattere più leggibile e dimensione maggiore */
       font-size: 1.3em;
       font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
-      color: #444;
-      line-height: 1.6em;
+      line-length: 1.6em;
     }
     .diario-container {
       width: 80%;
@@ -72,7 +71,7 @@
     }
     .map-section {
       display: flex;
-      justify-content: center;
+      justify-price: center;
       margin: 1em auto;
     }
     .map-wrapper {
@@ -113,7 +112,7 @@
       font-size: 2.2em;
     }
 
-    /* Stili per la visualizzazione delle date di permanenza e del simbolo della località */
+    /* Stili per le date di permanenza e simbolo */
     .info-localita {
       display: flex;
       justify-content: center;
@@ -149,24 +148,25 @@
 </head>
 <body style="background-color:#fffde7;">
 <!-- Titolo della località -->
-<h1 class="titolo-localita">Ella</h1>
+<h1 class="titolo-localita">Trincomalee</h1>
  <!-- Box date di permanenza e simbolo caratteristico -->
  <div class="info-localita">
    <div class="date-box">
-     sabato 9 agosto 2025<br/>
-     domenica 10 agosto 2025
+     sabato 16 agosto 2025<br/>
+     domenica 17 agosto 2025<br/>
+     lunedì 18 agosto 2025
    </div>
-   <div class="simbolo">🌄</div>
+   <div class="simbolo">⚓️</div>
  </div>
 <div class="top-section">
-  <img alt="Foto di Ella" class="foto-localita" src="../img/localita/ella.jpg"/>
-  <div class="descrizione">Ella è. Una piccola cittadina di montagna situata a circa 1.000 metri di altitudine nel cuore dello <strong>SRI LANKA</strong>. È circondata da piantagioni di tè, foreste tropicali e montagne spettacolari una delle cose più belle di Ella è il treno Ella-Kandy una delle ferroviarie più belle al mondo tra piantagioni e montagne.<br/><br/>Albergo: RIVER SPLENDOUR HOME STAY</div>
+  <img alt="Foto di Trincomalee" class="foto-localita" src="../img/localita/trincomalee.jpg"/>
+  <div class="descrizione">Trincomalee si trova sulla costa nord-orientale dello <strong>Sri Lanka</strong>, a circa 240 km da Colombo. È famosa per il suo porto naturale poco profondo, uno dei più grandi al mondo.<br/><br/><strong>ALBERGO:</strong> Trinco Blue by Cinnamon</div>
 </div>
 <div class="map-section">
   <div class="map-wrapper">
     <img src="../img/mappa_fumetto.jpg" alt="Mappa Sri Lanka"/>
-    <!-- Marker per Ella: approssimativamente nella zona centrale-sud -->
-    <div class="map-marker" style="top: 60%; left: 60%;"></div>
+    <!-- Marker per Trincomalee: approssimativamente sulla costa nord-orientale -->
+    <div class="map-marker" style="top: 30%; left: 75%;"></div>
   </div>
 </div>
 <div class="diario-container">
@@ -195,11 +195,11 @@
 
 <script>
 (function() {
-  const diaryKey = 'diario_ella';
-  const ratingKey = 'rating_ella';
-  const visitKey = 'visit-ella';
+  const diaryKey = "diario_trincomalee";
+  const ratingKey = "rating_trincomalee";
+  const visitKey = 'visit-trincomalee';
   const diario = document.getElementById('diario');
-  let lastSavedValue = localStorage.getItem(diaryKey) || '';
+  let lastSavedValue = localStorage.getItem(diaryKey) || "";
   diario.value = lastSavedValue;
   let hasUnsavedChanges = false;
   diario.addEventListener('input', () => {

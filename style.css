@@ -1,86 +1,85 @@
-
-body {
-  
-  background: #fef6e4;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-
-h1 {
-  background-color: #ffcb77;
-  color: #3d405b;
-  margin: 0;
-  padding: 1em;
-  font-size: 1.8em;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.map-container {
-  position: relative;
-  display: inline-block;
-  max-width: 95%;
-}
-
-#mappa {
-  width: 100%;
-  height: auto;
-  border: 4px dashed #ff6f61;
-  border-radius: 10px;
-}
-
-.marker {
-  position: absolute;
-  background: #ff6f61;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 10px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 2px 2px 5px #999;
-  transform: translate(-50%, -50%);
-}
-
-
-
-body, textarea, h1, button {
-  font-size: 1.4em;
-}
-
-h1 {
-  font-size: 2.2em !important;
-}
-
-textarea {
-  height: 400px;
-}
-
-body, textarea, h1, button {
-  font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
-  font-size: 1.6em;
-  line-height: 1.6em;
-}
-
-h1 {
-  font-size: 2.5em !important;
-}
-
-textarea {
-  height: 450px;
-  font-size: 1.4em;
-}
-
-
-/* Font giocoso */
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+/* Colori e font principali */
 body {
     font-family: 'Comic Neue', cursive;
     font-size: 1.2em;
     line-height: 1.6em;
     background-color: #fef6e4;
     color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
+/* Stile globale del titolo semplice (non usato in home) */
+h1 {
+    background-color: #ffcb77;
+    color: #3d405b;
+    margin: 0;
+    padding: 1em;
+    font-size: 2.5em !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Titolo personalizzato in home con immagini e testo colorato */
+.title-home {
+    background-color: #ffcb77;
+    color: #3d405b;
+    margin: 0;
+    padding: 1em;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    flex-wrap: nowrap;
+}
+.title-home .colorful-title {
+    margin: 0;
+    font-size: 2.3em;
+    line-height: 1.2em;
+    background: linear-gradient(90deg, #ff595e, #ffca3a, #8ac926, #1982c4, #6a4c93);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.title-home .icon-title {
+    width: 60px;
+    height: auto;
+}
+/* Override h1 dentro la sezione home per eliminare il padding e il fondo */
+.title-home h1.colorful-title {
+    background-color: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Mappe nella home */
+.map-container {
+    position: relative;
+    display: inline-block;
+    max-width: 95%;
+    margin-top: 1em;
+}
+#mappa {
+    width: 100%;
+    height: auto;
+    border: 4px dashed #ff6f61;
+    border-radius: 10px;
+}
+.marker {
+    position: absolute;
+    background: #ff6f61;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px #999;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+
+/* Pulsanti di salvataggio/caricamento dati */
 button, .btn {
     font-size: 1.1em;
     padding: 0.6em 1.2em;
@@ -96,38 +95,57 @@ button:hover, .btn:hover {
     transform: scale(1.05);
 }
 
-/* Stelle valutazione */
+/* Stelle di valutazione */
 .stars {
-  display: flex;
-  gap: 0.4em;
-  font-size: 2em;
-  cursor: pointer;
+    display: flex;
+    gap: 0.4em;
+    font-size: 2em;
+    cursor: pointer;
 }
 .star {
-  color: lightgray;
+    color: lightgray;
 }
 .star.selected {
-  color: gold;
+    color: gold;
 }
 
-/* Marker animati (Leaflet) */
+/* Marker animati (per la mappa in home se usassimo Leaflet) */
 .leaflet-marker-icon.animated {
     animation: bounce 1s infinite;
 }
-
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-8px); }
 }
 
-/* Responsive */
+/* Responsività */
 @media (max-width: 768px) {
-  body {
-    font-size: 1em;
-  }
+    body {
+        font-size: 1em;
+    }
+    button, .btn {
+        font-size: 1em;
+        padding: 0.5em 1em;
+    }
+}
 
-  button, .btn {
-    font-size: 1em;
-    padding: 0.5em 1em;
-  }
+
+/* Migliora valutazione stelle e icona visto */
+.rating-stars {
+    font-size: 2.2em;
+    color: gold;
+    text-shadow: 1px 1px 2px #333;
+}
+.check-icon {
+    font-size: 2em;
+    color: #4CAF50;
+}
+.date-box {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ff6600;
+}
+.symbol {
+    height: 40px;
+    margin-left: 10px;
 }
