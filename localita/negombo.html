@@ -253,20 +253,17 @@
 </script>
 <!-- Effetto sonoro per la pressione dei pulsanti -->
 <script>
+// Precarichiamo l'audio click dal file MP3. Il percorso relativo parte
+// dalla directory della pagina corrente (localita) e risale di un livello
+// per raggiungere la cartella audio. La funzione beep riproduce il suono
+// impostando currentTime a 0 ad ogni chiamata.
+const clickSoundLocal = new Audio('../audio/click.mp3');
 function beep() {
   try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    const ctx = new AudioContext();
-    const oscillator = ctx.createOscillator();
-    const gainNode = ctx.createGain();
-    oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(600, ctx.currentTime);
-    oscillator.connect(gainNode);
-    gainNode.connect(ctx.destination);
-    oscillator.start();
-    oscillator.stop(ctx.currentTime + 0.08);
+    clickSoundLocal.currentTime = 0;
+    clickSoundLocal.play();
   } catch (e) {
-    // Browser non supporta AudioContext
+    // se il browser non supporta Audio o l'audio non è disponibile, ignora
   }
 }
 document.addEventListener('DOMContentLoaded', () => {

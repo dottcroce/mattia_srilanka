@@ -1,5 +1,8 @@
-// Aggiorniamo il nome del cache per includere le nuove risorse (icona e suono click).
-const CACHE_NAME = 'srilanka-app-v4';
+// Aggiorniamo ulteriormente il nome del cache per includere il nuovo
+// riferimento all'icona "banner.png" nel manifest. Questo forzerà il
+// browser a scaricare di nuovo le risorse e ad utilizzare la nuova icona
+// al posto di quella precedente installata sul dispositivo.
+const CACHE_NAME = 'srilanka-app-v6';
 // Elenco dei file da memorizzare in cache. Oltre alle pagine principali
 // includiamo anche tutte le pagine delle località, così da poterle
 // visualizzare offline. Se in futuro verranno aggiunte nuove località,
@@ -10,8 +13,8 @@ const FILES_TO_CACHE = [
   '/style.css',
   '/script.js',
   '/manifest.json',
-  '/img/icon-192.png',
-  '/img/icon-512.png',
+  // Includiamo l’icona banner affinché venga scaricata dal cache
+  '/img/banner.png',
   '/img/splash-screen.png',
   '/img/mappa_fumetto.jpg',
   // Pagine delle località

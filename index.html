@@ -35,22 +35,18 @@
 <script src="script.js"></script>
 <!-- Effetto sonoro al click: beep -->
 <script>
-// aggiunge un effetto sonoro ad ogni pressione di un pulsante
+// Precarichiamo il suono di click una sola volta. In questo modo il file MP3
+// viene caricato al momento della creazione della pagina e poi riutilizzato
+// a ogni pressione di un pulsante. Usiamo il percorso relativo dalla home
+// (la cartella audio si trova nella root dell'app). Se il browser non
+// supporta l'oggetto Audio, la funzione fallirà silenziosamente.
+const clickSound = new Audio('audio/click.mp3');
 function beep() {
   try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    const ctx = new AudioContext();
-    const oscillator = ctx.createOscillator();
-    const gainNode = ctx.createGain();
-    oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(600, ctx.currentTime);
-    oscillator.connect(gainNode);
-    gainNode.connect(ctx.destination);
-    oscillator.start();
-    // durata breve dell'effetto
-    oscillator.stop(ctx.currentTime + 0.08);
+    clickSound.currentTime = 0;
+    clickSound.play();
   } catch (e) {
-    // in caso di errori (browser incompatibile), ignora
+    // se il browser non supporta l'oggetto Audio non viene riprodotto alcun suono
   }
 }
 document.addEventListener('DOMContentLoaded', () => {

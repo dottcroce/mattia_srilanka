@@ -28,9 +28,10 @@
       border: 2px dashed #cba135;
       padding: 20px;
       border-radius: 10px;
-      /* carattere più leggibile e dimensione maggiore */
-      font-size: 1.3em;
-      font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+      /* Font più leggibile (Arial) e dimensione maggiore per una migliore
+         leggibilità su tablet e dispositivi mobili */
+      font-size: 1.5em;
+      font-family: 'Arial', sans-serif;
       line-length: 1.6em;
     }
     .diario-container {
@@ -52,8 +53,8 @@
     textarea {
       width: 100%;
       height: 300px;
-      font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
-      font-size: 1.3em;
+      font-family: 'Arial', sans-serif;
+      font-size: 1.5em;
       background: transparent;
       border: none;
       outline: none;
@@ -62,12 +63,12 @@
     button {
       margin: 10px;
       padding: 10px 20px;
-      font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       background-color: #ffcb77;
       border: 2px solid #e07a5f;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 1.2em;
+      font-size: 1.3em;
     }
     .map-section {
       display: flex;
@@ -108,11 +109,12 @@
       gap: 0.3em;
     }
     .diario-header .rating-section .stars {
-      /* ingrandisci le stelle della valutazione */
-      font-size: 2.2em;
+      font-size: 1.5em;
     }
 
-    /* Stili per la visualizzazione delle date di permanenza e del simbolo della località */
+    /* Stili per le date di permanenza e il simbolo della località.
+       Visualizza i giorni di soggiorno a Udawalawe e un'icona di elefante
+       per richiamare il parco nazionale e la fauna locale. */
     .info-localita {
       display: flex;
       justify-content: center;
@@ -128,35 +130,26 @@
       border: 2px dashed #d62828;
       border-radius: 10px;
       font-weight: bold;
-      font-size: 1.1em;
+      font-size: 1.2em;
+      font-family: 'Arial', sans-serif;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     }
     .simbolo {
       font-size: 2em;
-    }
-    /* Ingrandisci checkbox visitato e testi */
-    .diario-header .visit-section input[type="checkbox"] {
-      transform: scale(1.5);
-      accent-color: #d62828;
-      margin-right: 4px;
-    }
-    .diario-header .visit-section span,
-    .diario-header .rating-section span {
-      font-size: 1.2em;
     }
 </style>
 </head>
 <body style="background-color:#fffde7;">
 <!-- Titolo della località -->
 <h1 class="titolo-localita">Udawalawe</h1>
- <!-- Box date di permanenza e simbolo caratteristico -->
- <div class="info-localita">
-   <div class="date-box">
-     giovedì 7 agosto 2025<br/>
-     venerdì 8 agosto 2025
-   </div>
-   <div class="simbolo">🐘</div>
- </div>
+  <!-- Sezione che mostra i giorni di permanenza e il simbolo della località -->
+  <div class="info-localita">
+    <div class="date-box">
+      giovedì 7 agosto 2025<br/>
+      venerdì 8 agosto 2025
+    </div>
+    <div class="simbolo">🐘</div>
+  </div>
 <div class="top-section">
   <img alt="Foto di Udawalawe" class="foto-localita" src="../img/localita/udawalawe.jpg"/>
   <div class="descrizione">Una delle attrazioni più grandi di Udawalawe 
@@ -253,22 +246,16 @@
 </script>
 <!-- Effetto sonoro per la pressione dei pulsanti -->
 <script>
+// Precarichiamo il suono di click una sola volta. Percorso relativo dalla
+// directory localita alla cartella audio. Questo permette di riprodurre
+// l'effetto ad ogni pressione senza ritardi.
+const clickSoundLocal = new Audio('../audio/click.mp3');
 function beep() {
   try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    const ctx = new AudioContext();
-    const oscillator = ctx.createOscillator();
-    const gainNode = ctx.createGain();
-    oscillator.type = 'square';
-    oscillator.frequency.setValueAtTime(1000, ctx.currentTime);
-    oscillator.connect(gainNode);
-    // volume basso per un click discreto
-    gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
-    gainNode.connect(ctx.destination);
-    oscillator.start();
-    oscillator.stop(ctx.currentTime + 0.05);
+    clickSoundLocal.currentTime = 0;
+    clickSoundLocal.play();
   } catch (e) {
-    // Browser non supporta AudioContext
+    // Il browser potrebbe non supportare l'oggetto Audio
   }
 }
 document.addEventListener('DOMContentLoaded', () => {
